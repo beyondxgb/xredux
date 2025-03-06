@@ -1,0 +1,92 @@
+{
+  "name": "xredux",
+  "version": "1.0.2",
+  "description": "An upgrade for redux",
+  "main": "lib/xredux.js",
+  "unpkg": "dist/xredux.js",
+  "module": "es/xredux.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "clean": "rimraf lib dist es coverage",
+    "lint": "eslint --ext js,ts src test",
+    "check-types": "tsc --noEmit",
+    "pretest": "npm run build",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "npm test -- --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "rollup -c",
+    "prepare": "npm run clean && npm run check-types && npm run lint && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beyondxgb/xredux"
+  },
+  "author": "beyondxgb@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^23.6.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.1.4",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^1.1.2",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-typescript2": "^0.24.0",
+    "typescript": "3.5.3"
+  },
+  "dependencies": {
+    "is-plain-object": "^2.0.4",
+    "redux": "^4.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "globals": {
+      "NODE_ENV": "test"
+    }
+  }
+}
